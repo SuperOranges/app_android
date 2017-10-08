@@ -1,20 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:kevin="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.sun.ckpt.MainActivity">
+    tools:context="com.sun.ckpt.MainActivity"
+    android:orientation="vertical">
+    <include layout="@layout/topbar" />
+    <android.support.v4.view.ViewPager
+        android:id="@+id/id_viewpager"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
-    <TextView
-        android:layout_width="wrap_content"
+
+    <FrameLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_gravity="bottom">
 
-</android.support.constraint.ConstraintLayout>
+        <com.kevin.tabindicator.TabPageIndicatorEx
+            android:id="@+id/sssssss"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#FFF"
+            kevin:tabIcons="@array/bottom_bar_icons"
+            kevin:tabItemPadding="8dp"
+            kevin:tabLabels="@array/bottom_bar_labels"
+            kevin:tabSelectedColor="#99D579"
+            kevin:tabTextSize="8sp"
+            kevin:tabUnselectedColor="#555555" />
+    </FrameLayout>
+</LinearLayout>
 
 
