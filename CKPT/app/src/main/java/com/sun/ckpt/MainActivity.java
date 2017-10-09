@@ -1,6 +1,7 @@
 package com.sun.ckpt;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
@@ -13,7 +14,9 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.kevin.tabindicator.TabPageIndicatorEx;
 import com.sun.ckpt.util.TabFragment;
+import com.sun.ckpt.util.ToastManager;
 import com.sun.ckpt.util.TopBar;
+import com.xys.libzxing.zxing.activity.CaptureActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +40,21 @@ public class MainActivity extends FragmentActivity {
         mTopbar=(TopBar)findViewById(R.id.topBar);
         mTopbar.setButtonVisable(0, false);
         mTopbar.setButtonVisable(1, true);
+        // 为topbar注册监听事件，传入定义的接口
+        // 并以匿名类的方式实现接口内的方法
+        mTopbar.setOnTopbarClickListener(
+                new TopBar.topbarClickListener() {
+                    @Override
+                    public void rightClick() {
+                        //进入二维码扫描模块
+                        Intent openCameraIntent = new Intent(MainActivity.this, CaptureActivity.class);
+                        startActivityForResult(openCameraIntent, 0);
+                    }
+                    @Override
+                    public void leftClick() {
+
+                    }
+                });
 
     }
     /**
