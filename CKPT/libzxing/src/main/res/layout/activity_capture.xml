@@ -40,20 +40,31 @@
                 android:src="@drawable/zxing_line" />
 
         </RelativeLayout>
-
-        <ImageView
-            android:id="@+id/capture_mask_bottom"
+        <FrameLayout
+            android:id="@+id/capture_mask_bottom1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_below="@id/capture_crop_view"
-            android:background="@drawable/shadow" />
+            android:layout_below="@id/capture_crop_view">
+            <ImageView
+                android:id="@+id/capture_mask_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/shadow" />
 
+            <TextView
+                android:id="@+id/capture_mask_bottomtext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/sacnhint"
+                android:textColor="@android:color/white"/>
+        </FrameLayout>
         <ImageView
             android:id="@+id/capture_mask_left"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_above="@id/capture_mask_bottom"
+            android:layout_above="@id/capture_mask_bottom1"
             android:layout_alignParentLeft="true"
             android:layout_below="@id/capture_mask_top"
             android:layout_toLeftOf="@id/capture_crop_view"
@@ -63,7 +74,7 @@
             android:id="@+id/capture_mask_right"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_above="@id/capture_mask_bottom"
+            android:layout_above="@id/capture_mask_bottom1"
             android:layout_alignParentRight="true"
             android:layout_below="@id/capture_mask_top"
             android:layout_toRightOf="@id/capture_crop_view"

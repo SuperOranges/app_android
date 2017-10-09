@@ -1,3 +1,4 @@
 <resources>
     <string name="zxing_bar_name">扫一扫</string>
+    <string name="sacnhint">请将二维码放入框内</string>
 </resources>
