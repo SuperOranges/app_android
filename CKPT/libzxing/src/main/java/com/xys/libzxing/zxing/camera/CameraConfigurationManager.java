@@ -124,6 +124,8 @@ public final class CameraConfigurationManager {
 
         /** 设置相机预览为竖屏 */
         camera.setDisplayOrientation(90);
+
+
     }
 
     public Point getCameraResolution() {
@@ -225,4 +227,5 @@ public final class CameraConfigurationManager {
 
         return defaultSize;
     }
+
 }

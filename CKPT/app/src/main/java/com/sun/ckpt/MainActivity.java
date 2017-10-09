@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
 
 
 import com.kevin.tabindicator.TabPageIndicatorEx;
@@ -23,6 +24,9 @@ import java.util.List;
 
 public class MainActivity extends FragmentActivity {
     private TopBar mTopbar;
+    //
+    //二维码扫描
+    private TextView resultTextView;
     //
     private ViewPager mViewPager;
     private TabPageIndicatorEx mTabPageIndicatorEx;
@@ -55,7 +59,8 @@ public class MainActivity extends FragmentActivity {
 
                     }
                 });
-
+        //二维码
+        resultTextView = (TextView) this.findViewById(R.id.tv_scan_result);
     }
     /**
      * 初始化View
@@ -110,4 +115,23 @@ public class MainActivity extends FragmentActivity {
         //设置指示点
         // mTabPageIndicatorEx.setIndicateDisplay(2, true);
     }
+    //二维码
+    @Override
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK) {
+
+            Bundle bundle = data.getExtras();
+
+            String scanResult = bundle.getString("result");
+
+            resultTextView.setText(scanResult);
+
+        }
+
+    }
+
 }
