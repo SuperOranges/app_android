@@ -5,6 +5,6 @@ package com.sun.ckpt.services;
  */
 
 public interface CKPTSystemServices {
-     void scanQRCode();
+
 
 }

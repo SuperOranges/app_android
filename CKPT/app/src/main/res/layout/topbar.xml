@@ -8,7 +8,7 @@
     custom:leftBackground="@drawable/ic_arrow_back_black_24dp"
     custom:rightBackground="@drawable/ic_center_focus_strong_black_24dp"
     custom:title="Welcome to CKPT"
-    custom:titleTextSize="8sp"
+    custom:titleTextSize="15sp"
     custom:titleTextColor="@android:color/white"
     >
 

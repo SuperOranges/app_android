@@ -30,10 +30,16 @@ public class MainActivity extends FragmentActivity {
     //
     private ViewPager mViewPager;
     private TabPageIndicatorEx mTabPageIndicatorEx;
+
     private List<Fragment> mTabs = new ArrayList<>();
+
     private FragmentPagerAdapter mAdapter;
-    private String[] mTitles = new String[] { "First Fragment!",
-            "Second Fragment!", "Third Fragment!"};
+
+    private List<String> mData0 = new ArrayList<String>();
+    private List<String> mData1 = new ArrayList<String>();
+    private List<String> mData2 = new ArrayList<String>();
+
+    private ArrayList<List<String>> mTitles = new ArrayList<List<String>>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,11 +79,23 @@ public class MainActivity extends FragmentActivity {
         initViewPager();
     }
     private void initViewPager() {
-
-        for (String title : mTitles) {
+        // 增加测试数据
+        mData0.add("Recycler1");
+        mData0.add("Recycler2");
+        mData0.add("Recycler3");
+        mData1.add("Recycler4");
+        mData1.add("Recycler5");
+        mData1.add("Recycler6");
+        mData2.add("Recycler7");
+        mData2.add("Recycler8");
+        mData2.add("Recycler9");
+        mTitles.add(mData0);
+        mTitles.add(mData1);
+        mTitles.add(mData2);
+        for (List<String> title : mTitles) {
             TabFragment tabFragment = new TabFragment();
             Bundle args = new Bundle();
-            args.putString("title", title);
+            args.putStringArrayList("title", (ArrayList<String>) title);
             tabFragment.setArguments(args);
             mTabs.add(tabFragment);
         }

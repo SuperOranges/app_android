@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="bottom_bar_labels">
-        <item>"Task"</item>
+        <item>"今日"</item>
         <item>"历史"</item>
-        <item>"我的"</item>
+        <item>"我"</item>
     </string-array>
     <string-array name="bottom_bar_icons">
         <item>@mipmap/ic_menu_emoticons</item>
