@@ -64,7 +64,7 @@ public class TaskRecyclerAdapter extends RecyclerView.Adapter<TaskRecyclerAdapte
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         // 建立起ViewHolder中视图与数据的关联
-        viewHolder.textView.setText(mData.get(i) + i);
+        viewHolder.textView.setText(mData.get(i) + "  "+i);
     }
 
     @Override
