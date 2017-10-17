@@ -54,13 +54,13 @@ public final class Task {
     private final int mPositionNo;//物料投放点  台位？？？
 
     @Nullable
-    private final Date mBeginTime;//开工日期
+    private  final Date mBeginTime;//开工日期
 
     @Nullable
-    private final String mReportEmployeeNo;//报检员
+    private  final String mReportEmployeeNo;//报检员
 
     @Nullable
-    private final Date mCheckTime;//报检时间
+    private  final Date mCheckTime;//报检时间
 
     @Nullable
     private final String mCheckRemarks;//检验说明
@@ -117,5 +117,120 @@ public final class Task {
         this.mReceiveTime = mReceiveTime;
     }
 
+    //get method
+    @NonNull
+    public String getmTaskID() {
+        return mTaskID;
+    }
+
+    @Nullable
+    public String getmSID() {
+        return mSID;
+    }
+
+    @Nullable
+    public int getmSPDID() {
+        return mSPDID;
+    }
+
+    @NonNull
+    public String getmProductionOrderCode() {
+        return mProductionOrderCode;
+    }
+
+    @NonNull
+    public String getmBranchNo() {
+        return mBranchNo;
+    }
+
+    @NonNull
+    public String getmProductsID() {
+        return mProductsID;
+    }
+
+    @NonNull
+    public String getmProductionName() {
+        return mProductionName;
+    }
+
+    @Nullable
+    public String getmProductionUnit() {
+        return mProductionUnit;
+    }
+
+    @Nullable
+    public int getmDayCount() {
+        return mDayCount;
+    }
+
+    @Nullable
+    public String getmGraphNum() {
+        return mGraphNum;
+    }
+
+    @Nullable
+    public String getmSpec() {
+        return mSpec;
+    }
+
+    @NonNull
+    public int getmProcedureKindNo() {
+        return mProcedureKindNo;
+    }
+
+    @NonNull
+    public int getmPositionNo() {
+        return mPositionNo;
+    }
+
+    @Nullable
+    public Date getmBeginTime() {
+        return mBeginTime;
+    }
+
+    @Nullable
+    public String getmReportEmployeeNo() {
+        return mReportEmployeeNo;
+    }
+
+    @Nullable
+    public Date getmCheckTime() {
+        return mCheckTime;
+    }
+
+    @Nullable
+    public String getmCheckRemarks() {
+        return mCheckRemarks;
+    }
+
+    @Nullable
+    public Date getmCompleteTime() {
+        return mCompleteTime;
+    }
+
+    @Nullable
+    public String getmPSDID() {
+        return mPSDID;
+    }
+
+    @Nullable
+    public Date getmAcceptTime() {
+        return mAcceptTime;
+    }
+
+    @Nullable
+    public Date getmSendTime() {
+        return mSendTime;
+    }
+
+    @Nullable
+    public Date getmAssignTime() {
+        return mAssignTime;
+    }
+
+    @Nullable
+    public Date getmReceiveTime() {
+        return mReceiveTime;
+    }
 
 }
