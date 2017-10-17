@@ -31,7 +31,7 @@ public class WelcomeActivity extends Activity {
             if (progress >= 100) {
                 mHandler.removeMessages(MSG_PROGRESS_UPDATE);
             }
-            mHandler.sendEmptyMessageDelayed(MSG_PROGRESS_UPDATE, 3);//延时3ms再次发送消息
+            mHandler.sendEmptyMessageDelayed(MSG_PROGRESS_UPDATE, 30);//延时3ms再次发送消息
         };
     };
     @Override
