@@ -57,34 +57,34 @@ public final class Task {
     private  final Date mBeginTime;//开工日期
 
     @Nullable
-    private  final String mReportEmployeeNo;//报检员
+    private  final String mReportEmployeeNo; //报检员
 
     @Nullable
-    private  final Date mCheckTime;//报检时间
+    private  final Date mCheckTime; //报检时间
 
     @Nullable
-    private final String mCheckRemarks;//检验说明
+    private final String mCheckRemarks; //检验说明
 
     @Nullable
-    private final Date mCompleteTime;//入库时间  ？？？？是完工时间吗？？？
+    private final Date mCompleteTime; //入库时间  ？？？？是完工时间吗？？？
 
     @Nullable
-    private final String mPSDID;//配送单号
+    private final String mPSDID; //配送单号
 
     @Nullable
-    private final Date mAcceptTime;//接单时间
+    private final Date mAcceptTime; //接单时间
 
     @Nullable
-    private final Date mSendTime;//派单时间
+    private final Date mSendTime; //派单时间
 
     @Nullable
-    private final Date mAssignTime;//配单时间
+    private final Date mAssignTime; //配单时间
 
     @Nullable
-    private final Date mReceiveTime;//班组收料
+    private final Date mReceiveTime; //班组收料
 
 
-    //一个全体变量的构造方法
+    //     一个全体变量的构造方法
     public Task(@NonNull String mTaskID, String mSID, int mSPDID, @NonNull String mProductionOrderCode,
                 @NonNull String mBranchNo, @NonNull String mProductsID, @NonNull String mProductionName,
                 String mProductionUnit, int mDayCount, String mGraphNum, String mSpec, @NonNull int mProcedureKindNo,
@@ -117,7 +117,7 @@ public final class Task {
         this.mReceiveTime = mReceiveTime;
     }
 
-    //get method
+    //   get method
     @NonNull
     public String getmTaskID() {
         return mTaskID;
@@ -233,4 +233,59 @@ public final class Task {
         return mReceiveTime;
     }
 
+    //  是否开工
+    public boolean isBegin(){
+        if(mBeginTime != null){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    //  是否报检
+    public boolean isChecked(){
+        if(mCheckTime != null){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    //  是否检查
+    //  ??????
+    //  是否派单
+    public boolean isSend(){
+        if(mSendTime != null){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    //  是否配单
+    public boolean isAssign(){
+        if( mAssignTime != null){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    //  是否工料收组
+    public boolean isReceive(){
+        if( mReceiveTime != null){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    //  是否入库
+    public boolean isCompleted(){
+        if( mCompleteTime != null){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
