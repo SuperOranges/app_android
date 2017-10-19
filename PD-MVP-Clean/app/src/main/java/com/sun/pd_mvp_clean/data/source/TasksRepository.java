@@ -118,7 +118,7 @@ public class TasksRepository implements TasksDataSource {
         }
         mCachedTasks.clear();
         for(Task task:tasks){
-            mCachedTasks.put(task.getmTaskID(),task);
+            mCachedTasks.put(task.getTaskID(),task);
         }
         mCacheIsDirty = false;
     }

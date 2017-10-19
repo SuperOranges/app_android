@@ -60,6 +60,15 @@ public final class Task {
     private  final String mReportEmployeeNo; //报检员
 
     @Nullable
+    private  final Date mReportTime; //报检时间
+
+    @Nullable
+    private final String mReportRemarks; //检验说明
+
+    @Nullable
+    private  final String mCheckEmployeeNo; //检验员
+
+    @Nullable
     private  final Date mCheckTime; //报检时间
 
     @Nullable
@@ -84,13 +93,13 @@ public final class Task {
     private final Date mReceiveTime; //班组收料
 
 
-    //     一个全体变量的构造方法
     public Task(@NonNull String mTaskID, String mSID, int mSPDID, @NonNull String mProductionOrderCode,
                 @NonNull String mBranchNo, @NonNull String mProductsID, @NonNull String mProductionName,
                 String mProductionUnit, int mDayCount, String mGraphNum, String mSpec, @NonNull int mProcedureKindNo,
-                @NonNull int mPositionNo, Date mBeginTime, String mReportEmployeeNo, Date mCheckTime,
-                String mCheckRemarks, Date mCompleteTime, String mPSDID, Date mAcceptTime, Date mSendTime,
-                Date mAssignTime, Date mReceiveTime) {
+                @NonNull int mPositionNo, Date mBeginTime, String mReportEmployeeNo, Date mReportTime,
+                String mReportRemarks, String mCheckEmployeeNo, Date mCheckTime, String mCheckRemarks,
+                Date mCompleteTime, String mPSDID, Date mAcceptTime, Date mSendTime, Date mAssignTime,
+                Date mReceiveTime) {
 
         this.mTaskID = mTaskID;
         this.mSID = mSID;
@@ -107,6 +116,9 @@ public final class Task {
         this.mPositionNo = mPositionNo;
         this.mBeginTime = mBeginTime;
         this.mReportEmployeeNo = mReportEmployeeNo;
+        this.mReportTime = mReportTime;
+        this.mReportRemarks = mReportRemarks;
+        this.mCheckEmployeeNo = mCheckEmployeeNo;
         this.mCheckTime = mCheckTime;
         this.mCheckRemarks = mCheckRemarks;
         this.mCompleteTime = mCompleteTime;
@@ -115,121 +127,138 @@ public final class Task {
         this.mSendTime = mSendTime;
         this.mAssignTime = mAssignTime;
         this.mReceiveTime = mReceiveTime;
+
     }
 
     //   get method
+
+    @Nullable
+    public Date getReportTime() {
+        return mReportTime;
+    }
+
+    @Nullable
+    public String getReportRemarks() {
+        return mReportRemarks;
+    }
+
+    @Nullable
+    public String getCheckEmployeeNo() {
+        return mCheckEmployeeNo;
+    }
+
     @NonNull
-    public String getmTaskID() {
+    public String getTaskID() {
         return mTaskID;
     }
 
     @Nullable
-    public String getmSID() {
+    public String getSID() {
         return mSID;
     }
 
     @Nullable
-    public int getmSPDID() {
+    public int getSPDID() {
         return mSPDID;
     }
 
     @NonNull
-    public String getmProductionOrderCode() {
+    public String getProductionOrderCode() {
         return mProductionOrderCode;
     }
 
     @NonNull
-    public String getmBranchNo() {
+    public String getBranchNo() {
         return mBranchNo;
     }
 
     @NonNull
-    public String getmProductsID() {
+    public String getProductsID() {
         return mProductsID;
     }
 
     @NonNull
-    public String getmProductionName() {
+    public String getProductionName() {
         return mProductionName;
     }
 
     @Nullable
-    public String getmProductionUnit() {
+    public String getProductionUnit() {
         return mProductionUnit;
     }
 
     @Nullable
-    public int getmDayCount() {
+    public int getDayCount() {
         return mDayCount;
     }
 
     @Nullable
-    public String getmGraphNum() {
+    public String getGraphNum() {
         return mGraphNum;
     }
 
     @Nullable
-    public String getmSpec() {
+    public String getSpec() {
         return mSpec;
     }
 
     @NonNull
-    public int getmProcedureKindNo() {
+    public int getProcedureKindNo() {
         return mProcedureKindNo;
     }
 
     @NonNull
-    public int getmPositionNo() {
+    public int getPositionNo() {
         return mPositionNo;
     }
 
     @Nullable
-    public Date getmBeginTime() {
+    public Date getBeginTime() {
         return mBeginTime;
     }
 
     @Nullable
-    public String getmReportEmployeeNo() {
+    public String getReportEmployeeNo() {
         return mReportEmployeeNo;
     }
 
     @Nullable
-    public Date getmCheckTime() {
+    public Date getCheckTime() {
         return mCheckTime;
     }
 
     @Nullable
-    public String getmCheckRemarks() {
+    public String getCheckRemarks() {
         return mCheckRemarks;
     }
 
     @Nullable
-    public Date getmCompleteTime() {
+    public Date getCompleteTime() {
         return mCompleteTime;
     }
 
     @Nullable
-    public String getmPSDID() {
+    public String getPSDID() {
         return mPSDID;
     }
 
     @Nullable
-    public Date getmAcceptTime() {
+    public Date getAcceptTime() {
         return mAcceptTime;
     }
 
     @Nullable
-    public Date getmSendTime() {
+    public Date getSendTime() {
         return mSendTime;
     }
 
     @Nullable
-    public Date getmAssignTime() {
+    public Date getAssignTime() {
         return mAssignTime;
     }
 
     @Nullable
-    public Date getmReceiveTime() {
+    public Date getReceiveTime() {
         return mReceiveTime;
     }
 
@@ -243,6 +272,15 @@ public final class Task {
     }
 
     //  是否报检
+    public boolean isReport(){
+        if(mReportTime != null){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    //  是否检查
     public boolean isChecked(){
         if(mCheckTime != null){
             return true;
@@ -251,8 +289,6 @@ public final class Task {
         }
     }
 
-    //  是否检查
-    //  ??????
     //  是否派单
     public boolean isSend(){
         if(mSendTime != null){
