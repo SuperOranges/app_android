@@ -16,12 +16,14 @@ public class AccountRepository implements AccountDataSource {
     private final AccountDataSource mAccountRemoteDataSource ;
     private  final AccountDataSource mAccountLocalDataSource;
 
+    User mCacheUser;
+
     private AccountRepository(@NonNull AccountDataSource accountRemoteDataSource,@NonNull AccountDataSource accountLocalDataSource){
         mAccountRemoteDataSource  = checkNotNull(accountRemoteDataSource);
         mAccountLocalDataSource = checkNotNull(accountLocalDataSource);
     }
 
-    public static   AccountRepository getINSTANCE(AccountDataSource accountRemoteDataSource,AccountDataSource accountLocalDataSource){
+    public static  AccountRepository getINSTANCE(AccountDataSource accountRemoteDataSource,AccountDataSource accountLocalDataSource){
         if(INSTANCE == null){
             INSTANCE = new AccountRepository(accountRemoteDataSource,accountLocalDataSource);
         }
