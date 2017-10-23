@@ -38,6 +38,7 @@ public class AccountRepository implements AccountDataSource {
 
     @Override
     public void getNewUser(@NonNull LoadUserCallback callback) {
+            checkNotNull(callback);
 
     }
 
