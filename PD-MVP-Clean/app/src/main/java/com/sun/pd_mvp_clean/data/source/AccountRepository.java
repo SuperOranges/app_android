@@ -39,7 +39,7 @@ public class AccountRepository implements AccountDataSource {
     @Override
     public void getNewUser(@NonNull LoadUserCallback callback) {
             checkNotNull(callback);
-
+            getUserDataFromRemoteSource(callback);
     }
 
     @Override
@@ -56,4 +56,23 @@ public class AccountRepository implements AccountDataSource {
     public void deleteUser(@NonNull String userId) {
 
     }
+
+    private void getUserDataFromRemoteSource(final LoadUserCallback callback){
+            mAccountRemoteDataSource.getNewUser(new LoadUserCallback() {
+                @Override
+                public void onUserLoaded(User newUser) {
+                        refreshUser(newUser);
+                        callback.onUserLoaded(mCacheUser);
+                }
+
+                @Override
+                public void onDataNotAvailable() {
+                        callback.onDataNotAvailable();
+                }
+            });
+    }
+    private  void refreshUser(User user){
+        mCacheUser = user;
+    }
+
 }
