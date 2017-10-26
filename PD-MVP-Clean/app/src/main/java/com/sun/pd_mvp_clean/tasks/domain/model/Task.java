@@ -63,19 +63,19 @@ public final class Task {
     private  final Date mReportTime; //报检时间
 
     @Nullable
-    private final String mReportRemarks; //检验说明
+    private final String mReportRemarks; //报检说明
 
     @Nullable
     private  final String mCheckEmployeeNo; //检验员
 
     @Nullable
-    private  final Date mCheckTime; //报检时间
+    private  final Date mCheckTime; //检验时间
 
     @Nullable
     private final String mCheckRemarks; //检验说明
 
     @Nullable
-    private final Date mCompleteTime; //入库时间  ？？？？是完工时间吗？？？
+    private final Date mCompleteTime; //入库时间  就是是完工时间
 
     @Nullable
     private final String mPSDID; //配送单号
@@ -90,7 +90,7 @@ public final class Task {
     private final Date mAssignTime; //配单时间
 
     @Nullable
-    private final Date mReceiveTime; //班组收料
+    private final Date mReceiveTime; //班组收料   班组收料时间
 
 
     public Task(@NonNull String mTaskID, String mSID, int mSPDID, @NonNull String mProductionOrderCode,

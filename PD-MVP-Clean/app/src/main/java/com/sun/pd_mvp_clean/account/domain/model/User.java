@@ -20,42 +20,47 @@ public class User {
     @Nullable
     private final String mUserName;
 
-    //判断曾经是否登陆过
-    private  final boolean hasLogin;
+    //此变量用于判断是否是第一次登陆
+    private  final boolean firstLogin;
 
     //新用户请求登录
     public User(@NonNull String userId, @NonNull String password) {
-        this(userId,password, "try to login",false);
+        this(userId,password ,null , true);
     }
 
     //服务器返回的带有所有数据的User对象或者保存在本地数据源的User对象
-    public User(@NonNull String mUserId, @NonNull String mPassword,@Nullable String mUserName, boolean hasLogin) {
+    public User(@NonNull String mUserId, @NonNull String mPassword,@Nullable String mUserName, boolean firstLogin) {
         this.mUserId = mUserId;
         this.mPassword = mPassword;
         this.mUserName = mUserName;
-        this.hasLogin = hasLogin;
+        this.firstLogin = firstLogin;
     }
 
+    //  取得用户ID
     @NonNull
     public String getUserId() {
         return mUserId;
     }
 
+    //  取得用户密码
     @NonNull
     public String getPassword() {
 
         return mPassword;
     }
 
+    //  取得用户姓名
     @Nullable
     public String getUserName() {
         return mUserName;
     }
 
-    public boolean isHasLogin() {
-        return hasLogin;
+    //  判断是否是第一次登陆
+    public boolean isFirstLogin() {
+        return firstLogin;
     }
 
+    //  这个User对象是否是空的
     public boolean isEmpty() {
         return Strings.isNullOrEmpty(mUserId) &&
                 Strings.isNullOrEmpty(mPassword);
