@@ -2,6 +2,9 @@ package com.sun.pd_mvp_clean.scanstate.domain.model;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.webkit.DateSorter;
+
+import com.google.common.base.Strings;
 
 import java.util.Date;
 
@@ -15,7 +18,7 @@ public class ScanUpLoadTask {
     @NonNull
     private final String mUpLoadTaskId;
     
-    //扫码的日计划时间，来自于网络；断网时来自于系统；
+    //扫码的日计划时间，来自于网络；先会检测断网络连接是否正常，如果不正常则弹出对话框提示；
     @NonNull
     private final Date mUpLoadTaskTime;
     
@@ -65,6 +68,11 @@ public class ScanUpLoadTask {
     @NonNull
     public int getTaskState() {
         return mTaskState;
+    }
+
+    //依据ID来判断是否是空的upLoadTask
+    public boolean isEmpty() {
+        return Strings.isNullOrEmpty(mUpLoadTaskId);
     }
     
 }

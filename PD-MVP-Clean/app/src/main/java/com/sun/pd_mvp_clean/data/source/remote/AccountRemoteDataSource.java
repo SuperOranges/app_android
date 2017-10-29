@@ -15,33 +15,33 @@ import java.util.Map;
 public class AccountRemoteDataSource implements AccountDataSource {
 
     private  static AccountRemoteDataSource INTANCE;
-    private  static final Map<String, User> TASKS_SERVICE_DATA= new LinkedHashMap<>();
 
     private AccountRemoteDataSource(){}
 
-    public static final AccountRemoteDataSource getINTANCE(){
+    public static final AccountRemoteDataSource getIntance(){
         if(INTANCE == null){
             INTANCE = new AccountRemoteDataSource();
         }
         return  INTANCE;
     }
-    @Override
-    public void getNewUser(@NonNull LoadUserCallback callback) {
 
+    @Override
+    public void findUser(@NonNull LoadUserCallback callback) {
+        //不需要在远程数据源中实现
     }
 
     @Override
-    public void getUser(@NonNull String userID, @NonNull GetUserCallback callback) {
+    public void verifyUser(@NonNull User user, @NonNull LoadUserCallback callback) {
 
     }
 
     @Override
     public void saveUser(@NonNull User user) {
-
+        //不需要在远程数据源中实现
     }
 
     @Override
-    public void deleteUser(@NonNull String userId) {
-
+    public void deleteUser() {
+        //不需要在远程数据源中实现
     }
 }

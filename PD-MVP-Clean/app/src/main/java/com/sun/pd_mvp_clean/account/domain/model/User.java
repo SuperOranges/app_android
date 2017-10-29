@@ -45,7 +45,6 @@ public class User {
     //  取得用户密码
     @NonNull
     public String getPassword() {
-
         return mPassword;
     }
 
