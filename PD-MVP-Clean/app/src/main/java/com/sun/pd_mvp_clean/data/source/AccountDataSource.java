@@ -1,12 +1,8 @@
 package com.sun.pd_mvp_clean.data.source;
 
 import android.support.annotation.NonNull;
-import android.support.annotation.StringRes;
 
 import com.sun.pd_mvp_clean.account.domain.model.User;
-import com.sun.pd_mvp_clean.account.domain.usecase.GetUser;
-
-import java.util.List;
 
 /**
  * Created by 孙毅 on 2017/10/17.
