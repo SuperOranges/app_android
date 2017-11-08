@@ -1,13 +1,16 @@
 package com.sun.pd_mvp_clean.welcome;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 
+import com.sun.pd_mvp_clean.TasksActivity;
 import com.sun.pd_mvp_clean.account.domain.model.User;
+import com.sun.pd_mvp_clean.login.LoginActivity;
 
-import java.util.ArrayList;
+
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -42,13 +45,21 @@ public class WelcomeFragment extends Fragment implements WelcomeContract.View {
         mWelcomePresenter = checkNotNull(presenter);
     }
 
+
     @Override
     public void intentToLogin(Boolean state) {
+        Intent intent = new Intent(getActivity(),LoginActivity.class);
+        startActivity(intent);
 
     }
-
+    /**如果没有跳转就是fragment和activity没有进行绑定
+     *
+     */
     @Override
     public void intentToTasks(@NonNull User user, boolean state) {
-
+        Intent intent = new Intent(getActivity(), TasksActivity.class);
+        intent.putExtra("userInfo",user);
+        startActivity(intent);
+        //把用户信息传到了TaskActivity中，通过getSerializableExtra()方法来获取通过参数传递过来的序列化对象
     }
 }

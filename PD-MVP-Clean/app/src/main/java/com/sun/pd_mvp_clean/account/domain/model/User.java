@@ -5,13 +5,14 @@ import android.support.annotation.Nullable;
 
 import com.google.common.base.Strings;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 /**
  * Created by Administrator on 2017/10/20.
  */
 
-public class User {
+public class User implements Serializable{
 
     @NonNull
     private final String mUserId;
