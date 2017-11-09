@@ -9,7 +9,7 @@ import android.support.v4.app.Fragment;
 import com.sun.pd_mvp_clean.TasksActivity;
 import com.sun.pd_mvp_clean.account.domain.model.User;
 import com.sun.pd_mvp_clean.login.LoginActivity;
-
+import com.sun.pd_mvp_clean.util.NetUtils;
 
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -45,10 +45,16 @@ public class WelcomeFragment extends Fragment implements WelcomeContract.View {
         mWelcomePresenter = checkNotNull(presenter);
     }
 
+    @Override
+    public boolean  networkTest() {
+
+        return NetUtils.isConnected(getActivity());
+    }
 
     @Override
-    public void intentToLogin(Boolean state) {
+    public void intentToLogin(Boolean state,@Nullable int msg) {
         Intent intent = new Intent(getActivity(),LoginActivity.class);
+        intent.putExtra("networkIsConnection",msg);
         startActivity(intent);
 
     }

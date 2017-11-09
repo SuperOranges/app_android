@@ -8,6 +8,7 @@ import com.sun.pd_mvp_clean.UseCaseHandler;
 import com.sun.pd_mvp_clean.account.domain.model.User;
 import com.sun.pd_mvp_clean.account.domain.usecase.FindUser;
 import com.sun.pd_mvp_clean.account.domain.usecase.VerifyUser;
+import com.sun.pd_mvp_clean.util.NetUtils;
 
 /**
  * Created by Administrator on 2017/11/1.
@@ -42,12 +43,17 @@ public class WelcomePresenter implements WelcomeContract.Presenter {
         mUseCaseHandler.execute(mFindUser, new FindUser.RequestValues(), new UseCase.UseCaseCallback<FindUser.ResponseValue>() {
             @Override
             public void onSuccess(FindUser.ResponseValue response) {
-                    verifyUserToRemote(response.getUser());
+                    if(mWelcomeView.networkTest()==true) {
+                        verifyUserToRemote(response.getUser());
+                    }else{
+                        mWelcomeView.intentToLogin(true,0);//参数含义定义在WelcomeContract里了
+                    }
             }
 
             @Override
             public void onError() {
-                    mWelcomeView.intentToLogin(true);
+
+                    mWelcomeView.intentToLogin(true,1);
             }
         });
     }
@@ -63,7 +69,7 @@ public class WelcomePresenter implements WelcomeContract.Presenter {
 
             @Override
             public void onError() {
-                mWelcomeView.intentToLogin(true);
+                mWelcomeView.intentToLogin(true,2);
             }
         });
     }

@@ -4,7 +4,9 @@ import android.content.Context;
 import static com.google.common.base.Preconditions.checkNotNull;
 import android.support.annotation.NonNull;
 
+import com.sun.pd_mvp_clean.account.domain.usecase.ClearAllUser;
 import com.sun.pd_mvp_clean.account.domain.usecase.FindUser;
+import com.sun.pd_mvp_clean.account.domain.usecase.SaveUser;
 import com.sun.pd_mvp_clean.account.domain.usecase.VerifyUser;
 import com.sun.pd_mvp_clean.data.source.AccountRepository;
 import com.sun.pd_mvp_clean.data.source.TasksRepository;
@@ -38,5 +40,12 @@ public class Injection {
     }
     public  static VerifyUser provideVerifyUser(@NonNull Context context){
         return new VerifyUser(Injection.provideAccountRepository(context));
+    }
+
+    public  static SaveUser provideSaveUser(@NonNull Context context){
+        return  new SaveUser(Injection.provideAccountRepository(context));
+    }
+    public  static ClearAllUser provideClearAllUser(@NonNull Context context){
+        return new ClearAllUser(Injection.provideAccountRepository(context));
     }
 }

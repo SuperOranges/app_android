@@ -7,4 +7,16 @@ import android.support.v4.app.Fragment;
  */
 
 public class LoginFragment extends Fragment implements LoginContract.View {
+
+    private LoginContract.Presenter mLoginPresenter;
+    public  LoginFragment(){
+        // Requires empty public constructor
+    }
+    public static LoginFragment newInstance() {
+        return new LoginFragment();
+    }
+    
+    //// TODO: 2017/11/9  
+
+
 }
