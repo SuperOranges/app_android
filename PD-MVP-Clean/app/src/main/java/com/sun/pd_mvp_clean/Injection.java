@@ -12,6 +12,7 @@ import com.sun.pd_mvp_clean.data.source.AccountRepository;
 import com.sun.pd_mvp_clean.data.source.TasksRepository;
 import com.sun.pd_mvp_clean.data.source.local.AccountLocalDataSource;
 import com.sun.pd_mvp_clean.data.source.remote.AccountRemoteDataSource;
+import com.sun.pd_mvp_clean.data.source.remote.FakeAccoutRemoteDataSource;
 import com.sun.pd_mvp_clean.data.source.remote.TasksRemoteDataSource;
 
 /**
@@ -23,7 +24,7 @@ public class Injection {
 
     public static AccountRepository provideAccountRepository(@NonNull Context context){
         checkNotNull(context);
-        return AccountRepository.getINSTANCE(AccountRemoteDataSource.getIntance(),
+        return AccountRepository.getINSTANCE(FakeAccoutRemoteDataSource.getIntance(),
                 AccountLocalDataSource.getInstance(context));
     }
     public static TasksRepository provideTasksRepository(@NonNull Context context){

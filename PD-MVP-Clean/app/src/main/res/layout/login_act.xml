@@ -4,9 +4,9 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".welcome.WelcomeActivity">
+    tools:context=".login.LoginActivity">
     <FrameLayout
-        android:id="@+id/contentFrame"
+        android:id="@+id/loginContentFrame"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

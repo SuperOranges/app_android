@@ -1,6 +1,8 @@
 package com.sun.pd_mvp_clean.welcome;
 
 import android.support.annotation.NonNull;
+import android.util.Log;
+
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import com.sun.pd_mvp_clean.UseCase;
@@ -40,19 +42,23 @@ public class WelcomePresenter implements WelcomeContract.Presenter {
 
     @Override
     public void findUserFromLocal() {
+        Log.e("Welcome", "findUserFromLocal");
         mUseCaseHandler.execute(mFindUser, new FindUser.RequestValues(), new UseCase.UseCaseCallback<FindUser.ResponseValue>() {
+
             @Override
             public void onSuccess(FindUser.ResponseValue response) {
                     if(mWelcomeView.networkTest()==true) {
+                        Log.e("Welcome", "onSuccessTrue");
                         verifyUserToRemote(response.getUser());
                     }else{
+                        Log.e("Welcome", "onSuccessFail");
                         mWelcomeView.intentToLogin(true,0);//参数含义定义在WelcomeContract里了
                     }
             }
 
             @Override
             public void onError() {
-
+                Log.e("Welcome", "onError");
                     mWelcomeView.intentToLogin(true,1);
             }
         });
@@ -60,7 +66,7 @@ public class WelcomePresenter implements WelcomeContract.Presenter {
 
     @Override
     public void verifyUserToRemote(@NonNull User user) {
-
+        Log.e("Welcome", "verifyUserToRemote");
         mUseCaseHandler.execute(mVerifyUser, new VerifyUser.RequestValues(user), new UseCase.UseCaseCallback<VerifyUser.ResponseValue>() {
             @Override
             public void onSuccess(VerifyUser.ResponseValue response) {

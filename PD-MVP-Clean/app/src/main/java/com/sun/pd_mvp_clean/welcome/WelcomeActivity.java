@@ -21,10 +21,10 @@ public class WelcomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        //无标题栏
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        //全屏模式
+//        requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        //无标题栏
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//        //全屏模式
         setContentView(R.layout.welcome_act);
         WelcomeFragment mWelcomeFragment = (WelcomeFragment)getSupportFragmentManager().findFragmentById(R.id.contentFrame);
         if(mWelcomeFragment == null){
@@ -34,7 +34,5 @@ public class WelcomeActivity extends AppCompatActivity {
         mWelcomePresenter = new WelcomePresenter(Injection.provideUseCaseHandler(),
                 mWelcomeFragment,Injection.provideFindUser(getApplicationContext()),
                 Injection.provideVerifyUser(getApplicationContext()));
-
-
     }
 }

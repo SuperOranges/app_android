@@ -31,7 +31,7 @@ public class AccountRemoteDataSource implements AccountDataSource {
     }
 
     @Override
-    public void verifyUser(@NonNull User user, @NonNull LoadUserCallback callback) {
+    public void verifyUser(@NonNull User user, final @NonNull LoadUserCallback callback) {
 
 
     }

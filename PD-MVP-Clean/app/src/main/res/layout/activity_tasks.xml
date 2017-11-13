@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.sun.pd_mvp_clean.TasksActivity">
+    tools:context="com.sun.pd_mvp_clean.tasks.TasksActivity">
 
     <TextView
         android:layout_width="wrap_content"

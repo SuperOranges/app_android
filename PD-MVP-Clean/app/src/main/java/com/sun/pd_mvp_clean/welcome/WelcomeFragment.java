@@ -5,8 +5,12 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-import com.sun.pd_mvp_clean.TasksActivity;
+import com.sun.pd_mvp_clean.R;
+import com.sun.pd_mvp_clean.tasks.TasksActivity;
 import com.sun.pd_mvp_clean.account.domain.model.User;
 import com.sun.pd_mvp_clean.login.LoginActivity;
 import com.sun.pd_mvp_clean.util.NetUtils;
@@ -32,17 +36,25 @@ public class WelcomeFragment extends Fragment implements WelcomeContract.View {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mWelcomePresenter.start();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        mWelcomePresenter.start();
+
     }
 
     @Override
     public void setPresenter(WelcomeContract.Presenter presenter) {
         mWelcomePresenter = checkNotNull(presenter);
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View root = inflater.inflate(R.layout.welcome_frag, container, false);
+        return root;
     }
 
     @Override
@@ -54,7 +66,7 @@ public class WelcomeFragment extends Fragment implements WelcomeContract.View {
     @Override
     public void intentToLogin(Boolean state,@Nullable int msg) {
         Intent intent = new Intent(getActivity(),LoginActivity.class);
-        intent.putExtra("networkIsConnection",msg);
+        intent.putExtra("ErrorInfo",msg);
         startActivity(intent);
 
     }

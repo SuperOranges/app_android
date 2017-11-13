@@ -1,7 +1,9 @@
-package com.sun.pd_mvp_clean;
+package com.sun.pd_mvp_clean.tasks;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.sun.pd_mvp_clean.R;
 
 public class TasksActivity extends AppCompatActivity {
 

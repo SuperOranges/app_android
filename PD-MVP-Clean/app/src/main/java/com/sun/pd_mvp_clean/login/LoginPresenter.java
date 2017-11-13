@@ -23,16 +23,14 @@ public class LoginPresenter  implements LoginContract.Presenter {
     private final ClearAllUser mClearAllUser;
     private final UseCaseHandler mUseCaseHandler;
 
-    @NonNull
-    private User mUser;
+
 
     public LoginPresenter(@NonNull UseCaseHandler useCaseHandler, @NonNull LoginContract.View welcomeView,
-                             @NonNull VerifyUser verifyUser,@NonNull User user,@NonNull SaveUser saveUser,
+                             @NonNull VerifyUser verifyUser,@NonNull SaveUser saveUser,
                           @NonNull ClearAllUser clearAllUser){
         mLoginView = checkNotNull(welcomeView,"welcomeView can not be null");
         mVerifyUser = checkNotNull(verifyUser,"verifyUser can not be null");
         mUseCaseHandler = checkNotNull(useCaseHandler,"useCaseHandler can not be null");
-        mUser = checkNotNull(user);
         mSaveUser = checkNotNull(saveUser,"saveUser can not be null");
         mClearAllUser = checkNotNull(clearAllUser,"clearAllUser can not be null");
         mLoginView.setPresenter(this);
@@ -41,7 +39,7 @@ public class LoginPresenter  implements LoginContract.Presenter {
     @Override
     public void start() {
 
-        verifyUserToRemote(mUser);
+
     }
 
     @Override
