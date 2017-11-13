@@ -12,6 +12,7 @@ import com.sun.pd_mvp_clean.account.domain.model.User;
 
 public interface LoginContract {
         interface View extends BaseView<Presenter>{
+                boolean  networkTest();//判断网络是否连接
                 void showInterntError();//提示网络异常
                 void showInputFormatError();//提示输入格式异常
                 void showLoginFailed();//提示登录失败，可能是用户名或密码错误等

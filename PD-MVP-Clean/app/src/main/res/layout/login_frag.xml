@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <android.support.v7.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/login_cardview"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        card_view:cardCornerRadius="30dp"
+        android:elevation="10dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@drawable/timg1" />
+    </android.support.v7.widget.CardView>
+    <EditText
+        android:id="@+id/usernameOfLogin"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:maxLines="1"
+        android:digits="0123456789"
+
+        android:drawableLeft="@drawable/ic_account"
+        android:hint="@string/username_hint"/>
+    <EditText
+        android:id="@+id/passwordOfLogin"
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_height="50dp"
+        android:inputType="textPassword"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:maxLines="1"
+        android:digits="0123456789"
+
+        android:drawableLeft="@drawable/ic_password"
+        android:hint="@string/password_hint"/>
+    <Button
+        android:id="@+id/login_in"
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:onClick="onLoginClick"
+        android:text="@string/login_in"
+        android:textSize="15sp"/>
+    <TextView
+        android:id="@+id/errorHitOfLogin"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:textColor="@android:color/holo_purple"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+
+        android:gravity="center"/>
+</LinearLayout>
