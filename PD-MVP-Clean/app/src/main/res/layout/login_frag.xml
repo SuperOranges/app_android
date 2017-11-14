@@ -27,6 +27,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:maxLines="1"
+        android:inputType="number"
         android:digits="0123456789"
 
         android:drawableLeft="@drawable/ic_account"
@@ -51,7 +52,7 @@
         android:layout_height="50dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:onClick="onLoginClick"
+
         android:text="@string/login_in"
         android:textSize="15sp"/>
     <TextView

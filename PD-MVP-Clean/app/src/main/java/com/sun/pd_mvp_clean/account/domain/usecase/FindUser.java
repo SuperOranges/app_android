@@ -24,6 +24,7 @@ public class FindUser extends UseCase<FindUser.RequestValues,FindUser.ResponseVa
 
     @Override
     protected void executeUseCase(RequestValues requestValues) {
+        Log.e("FindUserExecute","excute");
         mAccountRepository.findUser(new AccountDataSource.LoadUserCallback() {
             @Override
             public void onUserLoaded(User newUser) {

@@ -42,6 +42,7 @@ public class WelcomePresenter implements WelcomeContract.Presenter {
 
     @Override
     public void findUserFromLocal() {
+
         Log.e("Welcome", "findUserFromLocal");
         mUseCaseHandler.execute(mFindUser, new FindUser.RequestValues(), new UseCase.UseCaseCallback<FindUser.ResponseValue>() {
 

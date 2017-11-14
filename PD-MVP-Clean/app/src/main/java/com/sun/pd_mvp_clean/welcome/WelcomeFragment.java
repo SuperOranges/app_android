@@ -16,6 +16,9 @@ import com.sun.pd_mvp_clean.login.LoginActivity;
 import com.sun.pd_mvp_clean.util.NetUtils;
 
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
@@ -36,12 +39,22 @@ public class WelcomeFragment extends Fragment implements WelcomeContract.View {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mWelcomePresenter.start();
+
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        Timer timer = new Timer();
+        //设置定时器执行的任务
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                mWelcomePresenter.start();
+            }
+        };
+        //通过Timer的schedule()方法设置时间为3001ms,计时结束后执行TimerTask
+        timer.schedule(timerTask,1000);
 
     }
 

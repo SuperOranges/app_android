@@ -36,24 +36,45 @@ public class AccountRepository implements AccountDataSource {
 
 
     @Override
-    public void findUser(@NonNull LoadUserCallback callback) {
+    public void findUser(@NonNull final LoadUserCallback callback) {
+        mAccountLocalDataSource.findUser(new LoadUserCallback() {
+            @Override
+            public void onUserLoaded(User newUser) {
+                callback.onUserLoaded(newUser);
+            }
 
+            @Override
+            public void onDataNotAvailable() {
+                callback.onDataNotAvailable();
+            }
+        });
     }
 
     @Override
-    public void verifyUser(@NonNull User user, @NonNull LoadUserCallback callback) {
+    public void verifyUser(@NonNull User user, @NonNull final LoadUserCallback callback) {
+        mAccountRemoteDataSource.verifyUser(user, new LoadUserCallback() {
+            @Override
+            public void onUserLoaded(User newUser) {
+                callback.onUserLoaded(newUser);
+            }
 
+            @Override
+            public void onDataNotAvailable() {
+                callback.onDataNotAvailable();
+            }
+        });
     }
 
     @Override
     public void saveUser(@NonNull User user) {
-
+        mAccountLocalDataSource.saveUser(user);
     }
 
     @Override
     public void deleteUser() {
-
+        mAccountLocalDataSource.deleteUser();
     }
+
 
 
     private  void refreshUser(User user){
