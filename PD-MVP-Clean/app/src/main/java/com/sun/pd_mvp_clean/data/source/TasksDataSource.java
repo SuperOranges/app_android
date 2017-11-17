@@ -27,20 +27,26 @@ public interface TasksDataSource {
                 void onDateUp1oadError();
        }
 
-        //按ID取得一个Task
-        void getTask(@NonNull String taskID,@NonNull GetTaskCallback callback);
+    /**
+     * 按ID取得一个Task,用于细节页面，可以先不写，先尝试一下从列表点击跳转时把task传过去
+     * @param flag 此参数用于辨识区块
+     * @param taskID
+     * @param callback
+     */
+        void getTaskById(@NonNull int flag,@NonNull String taskID,@NonNull GetTaskCallback callback);
 
         //刷新Task
 
     /**
-     * 此方法用于按不同模式（区块）刷新Tasks
+     * 此方法用于按不同模式（区块）在下次请求数据时刷新缓存中的Tasks
      * @param flag 模式标志
-     *             0表示 - 今日计划区域内 - 今日之前tasks
-     *             1表示 - 今日计划区域内 - 今日tasks
-     *             2表示 - 历史计划区域内 - 今日之前tasks
-     *             3表示 - 历史计划区域内 - 今日tasks
-     *             4表示 - 历史计划区域内 - 明日tasks
-     *             5表示 - 历史计划区域内 - 后日tasks
+     *             0表示 - 全部区域内 - 都要刷新
+     *             1表示 - 今日计划区域内 - 今日之前tasks
+     *             2表示 - 今日计划区域内 - 今日tasks
+     *             3表示 - 历史计划区域内 - 今日之前tasks
+     *             4表示 - 历史计划区域内 - 今日tasks
+     *             5表示 - 历史计划区域内 - 明日tasks
+     *             6表示 - 历史计划区域内 - 后日tasks
      */
         void refreshTasks(@NonNull int flag);
 

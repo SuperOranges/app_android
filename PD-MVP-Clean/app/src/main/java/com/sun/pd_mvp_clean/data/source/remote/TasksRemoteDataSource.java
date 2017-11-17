@@ -4,8 +4,10 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 
 import com.sun.pd_mvp_clean.data.source.TasksDataSource;
+import com.sun.pd_mvp_clean.scanstate.domain.model.ScanUpLoadTask;
 import com.sun.pd_mvp_clean.tasks.domain.model.Task;
 
+import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -34,27 +36,33 @@ public class TasksRemoteDataSource implements TasksDataSource {
 
     }
 
-
-
     @Override
-    public void getTasks(@NonNull LoadTasksCallback callback) {
+    public void getTaskById(@NonNull int flag, @NonNull String taskID, @NonNull GetTaskCallback callback) {
 
     }
 
     @Override
-    public void getTask(@NonNull String taskID, @NonNull final GetTaskCallback callback) {
-        final Task task = TASK_SERVICE_DATA.get(taskID);
-        Handler handler =new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                callback.onTaskLoaded(task);
-            }
-        },SERVICE_LATENCY_IN_MILLIS);
+    public void refreshTasks(@NonNull int flag) {
+
     }
 
     @Override
-    public void refreshTasks() {
+    public void getUncompletedTasks(@NonNull int flag, @NonNull Date date, @NonNull LoadTasksCallback callback) {
+
+    }
+
+    @Override
+    public void getFutureTasks(@NonNull int flag, @NonNull Date date, @NonNull LoadTasksCallback callback) {
+
+    }
+
+    @Override
+    public void getBeforeTasks(@NonNull Date date1, @NonNull Date date2, @NonNull LoadTasksCallback callback) {
+
+    }
+
+    @Override
+    public void uploadScanTask(@NonNull ScanUpLoadTask upLoadTask, @NonNull UploadTasksCallback callback) {
 
     }
 }

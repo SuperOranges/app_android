@@ -2,9 +2,11 @@ package com.sun.pd_mvp_clean.tasks.domain.model;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.media.MediaBrowserCompat;
 
 import com.google.common.base.Objects;
 import com.google.common.base.Strings;
+import com.sun.pd_mvp_clean.util.DateUtils;
 
 import java.util.Date;
 
@@ -324,4 +326,28 @@ public final class Task {
             return false;
         }
     }
+
+    public boolean isNormalCompleted(){
+        if(mBeginTime!= null && mCompleteTime!=null && DateUtils.isDateSame(mCompleteTime,mBeginTime)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public boolean isOvertimeCompleted(){
+        if(mBeginTime!= null && mCompleteTime!=null && DateUtils.isDateOneBigger(mCompleteTime,mBeginTime)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public  boolean isOvertimeThreeDaysCompleted(){
+        if(mBeginTime!= null && mCompleteTime!=null && DateUtils.isDateOverThreeDays(mCompleteTime,mBeginTime)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 }
