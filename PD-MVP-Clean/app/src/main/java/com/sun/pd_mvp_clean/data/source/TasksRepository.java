@@ -116,12 +116,12 @@ public class TasksRepository implements TasksDataSource {
     }
 
     @Override
-    public void getUncompletedTasks(@NonNull int flag, @NonNull Date date, @NonNull LoadTasksCallback callback) {
+    public void getUncompletedTasks(@NonNull final int flag, @NonNull Date date, @NonNull LoadTasksCallback callback) {
 
     }
 
     @Override
-    public void getFutureTasks(@NonNull int flag, @NonNull Date date, @NonNull LoadTasksCallback callback) {
+    public void getFutureTasks(@NonNull final int flag, @NonNull Date date, @NonNull LoadTasksCallback callback) {
 
     }
 

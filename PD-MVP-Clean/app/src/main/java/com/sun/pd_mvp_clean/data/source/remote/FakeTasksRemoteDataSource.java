@@ -1,7 +1,10 @@
 package com.sun.pd_mvp_clean.data.source.remote;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.NonNull;
 
+import com.google.common.collect.Lists;
 import com.sun.pd_mvp_clean.data.source.TasksDataSource;
 import com.sun.pd_mvp_clean.scanstate.domain.model.ScanUpLoadTask;
 import com.sun.pd_mvp_clean.tasks.domain.model.Task;
@@ -154,18 +157,55 @@ public class FakeTasksRemoteDataSource implements TasksDataSource {
     }
 
     @Override
-    public void getUncompletedTasks(@NonNull int flag, @NonNull Date date, @NonNull LoadTasksCallback callback) {
-
+    public void getUncompletedTasks(@NonNull final int flag, @NonNull Date date, @NonNull final LoadTasksCallback callback) {
+        Handler handler = new Handler(Looper.getMainLooper());
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                switch (flag) {
+                    case 1:
+                    callback.onTasksLoaded(Lists.<Task>newArrayList(TASK_SERVICE_DATA_1.values()));
+                        break;
+                    case 2:
+                    callback.onTasksLoaded(Lists.<Task>newArrayList(TASK_SERVICE_DATA_2.values()));
+                        break;
+                    default:callback.onDataNotAvailable();break;
+                }
+            }
+        },SERVICE_LATENCY_IN_MILLIS);
     }
 
     @Override
-    public void getFutureTasks(@NonNull int flag, @NonNull Date date, @NonNull LoadTasksCallback callback) {
-
+    public void getFutureTasks(@NonNull final int flag, @NonNull Date date, @NonNull final LoadTasksCallback callback) {
+        Handler handler = new Handler(Looper.getMainLooper());
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                switch (flag) {
+                    case 4:
+                        callback.onTasksLoaded(Lists.<Task>newArrayList(TASK_SERVICE_DATA_4.values()));
+                        break;
+                    case 5:
+                        callback.onTasksLoaded(Lists.<Task>newArrayList(TASK_SERVICE_DATA_5.values()));
+                        break;
+                    case 6:
+                        callback.onTasksLoaded(Lists.<Task>newArrayList(TASK_SERVICE_DATA_6.values()));
+                        break;
+                    default:callback.onDataNotAvailable();break;
+                }
+            }
+        },SERVICE_LATENCY_IN_MILLIS);
     }
 
     @Override
-    public void getBeforeTasks(@NonNull Date date1, @NonNull Date date2, @NonNull LoadTasksCallback callback) {
-
+    public void getBeforeTasks(@NonNull Date date1, @NonNull Date date2, @NonNull final LoadTasksCallback callback) {
+        Handler handler = new Handler(Looper.getMainLooper());
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                callback.onTasksLoaded(Lists.<Task>newArrayList(TASK_SERVICE_DATA_3.values()));
+            }
+        },SERVICE_LATENCY_IN_MILLIS);
     }
 
     @Override

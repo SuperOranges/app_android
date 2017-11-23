@@ -56,7 +56,7 @@ public interface TasksDataSource {
      * @param date 日期，传入的是固定的今日的日期
      * @param callback 回调取得到的tasks
      */
-    void getUncompletedTasks(@NonNull int flag,@NonNull Date date,@NonNull LoadTasksCallback callback);
+    void getUncompletedTasks(@NonNull final int flag,@NonNull Date date,@NonNull LoadTasksCallback callback);
 
     /**
      * 此方法用于获取今日、明日、后日的 - 全部的 - 的计划，在历史计划页面
@@ -64,7 +64,7 @@ public interface TasksDataSource {
      * @param date 日期，传入的是固定的今日的日期
      * @param callback  回调取得到的tasks
      */
-    void getFutureTasks(@NonNull int flag,@NonNull Date date,@NonNull LoadTasksCallback callback);
+    void getFutureTasks(@NonNull final int flag,@NonNull Date date,@NonNull LoadTasksCallback callback);
 
     /**
      * 此方法用于获取今日之前的全部计划，由于计划数众多，故采用日期查找方式，在历史计划页面
