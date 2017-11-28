@@ -2,13 +2,19 @@ package com.sun.pd_mvp_clean.util;
 
 import android.util.Log;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * Created by 孙毅 on 2017/11/17.
+ * 用于日期类型转换和获取时间
  */
 
 public class DateUtils {
@@ -50,7 +56,7 @@ public class DateUtils {
     //字符串转日期"yyyy-mm-dd"型
     public static Date string2Date(String dateStr){
         Date formateDate = null;
-        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd",Locale.CHINA);
         try {
             formateDate = format.parse(dateStr);
         } catch (ParseException e) {
@@ -62,7 +68,7 @@ public class DateUtils {
     }
     //日期格式化"yyyy-mm-dd"型
     public static Date date2date(Date date) {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd",Locale.CHINA);
         String str = sdf.format(date);
         try {
             date = sdf.parse(str);
@@ -73,6 +79,23 @@ public class DateUtils {
         return date;
     }
 
+    //获取网络时间  为“yyyy-MM-dd HH:mm:ss”型字符串
+    public static Date getWebsiteDatetime(){
+        try{
+            URL url =new URL("http://www.ntsc.ac.cn");//获取资源对象
+            URLConnection uc = url.openConnection();//生成连接对象
+            uc.connect();//发出连接
+            long ld = uc.getDate();//读取网站日期时间
+            Date date = new Date(ld);
+//            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);
+            return  date2date(date);
+        }catch (MalformedURLException e){
+            e.printStackTrace();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
 
 
 }

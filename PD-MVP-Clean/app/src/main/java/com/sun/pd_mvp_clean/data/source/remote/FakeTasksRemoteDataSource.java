@@ -148,12 +148,12 @@ public class FakeTasksRemoteDataSource implements TasksDataSource {
 
     @Override
     public void getTaskById(@NonNull int flag, @NonNull String taskID, @NonNull GetTaskCallback callback) {
-
+        //不需要实现，在TasksRepository中是实现
     }
 
     @Override
     public void refreshTasks(@NonNull int flag) {
-
+        //不需要实现，在TasksRepository中是实现
     }
 
     @Override
@@ -210,6 +210,6 @@ public class FakeTasksRemoteDataSource implements TasksDataSource {
 
     @Override
     public void uploadScanTask(@NonNull ScanUpLoadTask upLoadTask, @NonNull UploadTasksCallback callback) {
-
+        //暂时不实现
     }
 }

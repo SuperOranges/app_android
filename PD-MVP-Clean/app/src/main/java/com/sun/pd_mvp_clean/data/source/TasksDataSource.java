@@ -52,7 +52,7 @@ public interface TasksDataSource {
 
     /**
      * 此方法用于获取今日计划内未完成的计划
-     * @param flag 模式标志，0表示取得 -今日之前- 未完成的计划，1  表示取得 - 今日 - 未完成的计划
+     * @param flag 模式标志，1表示取得 -今日之前- 未完成的计划，2 表示取得 - 今日 - 未完成的计划
      * @param date 日期，传入的是固定的今日的日期
      * @param callback 回调取得到的tasks
      */
@@ -60,7 +60,7 @@ public interface TasksDataSource {
 
     /**
      * 此方法用于获取今日、明日、后日的 - 全部的 - 的计划，在历史计划页面
-     * @param flag 模式标志，0表示取得今日的全部计划，1表示取得明日的全部计划，2表示取得后日的全部计划
+     * @param flag 模式标志，4表示取得今日的全部计划，5表示取得明日的全部计划，6表示取得后日的全部计划
      * @param date 日期，传入的是固定的今日的日期
      * @param callback  回调取得到的tasks
      */

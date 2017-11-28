@@ -13,7 +13,11 @@ import com.sun.pd_mvp_clean.data.source.TasksRepository;
 import com.sun.pd_mvp_clean.data.source.local.AccountLocalDataSource;
 import com.sun.pd_mvp_clean.data.source.remote.AccountRemoteDataSource;
 import com.sun.pd_mvp_clean.data.source.remote.FakeAccoutRemoteDataSource;
+import com.sun.pd_mvp_clean.data.source.remote.FakeTasksRemoteDataSource;
 import com.sun.pd_mvp_clean.data.source.remote.TasksRemoteDataSource;
+import com.sun.pd_mvp_clean.tasks.domain.filter.FilterFactory;
+import com.sun.pd_mvp_clean.tasks.domain.usecase.GetTask;
+import com.sun.pd_mvp_clean.tasks.domain.usecase.GetTasks;
 
 /**
  * Created by Administrator on 2017/11/8.
@@ -29,12 +33,14 @@ public class Injection {
     }
     public static TasksRepository provideTasksRepository(@NonNull Context context){
         checkNotNull(context);
-        return TasksRepository.getINSTANCE(TasksRemoteDataSource.getInstance());
+        return TasksRepository.getINSTANCE(FakeTasksRemoteDataSource.getInstance());
     }
 
     public static UseCaseHandler provideUseCaseHandler() {
         return UseCaseHandler.getInstance();
     }
+
+    //About Account Usecase
 
     public  static FindUser provideFindUser(@NonNull Context context){
         return  new FindUser(Injection.provideAccountRepository(context));
@@ -49,4 +55,13 @@ public class Injection {
     public  static ClearAllUser provideClearAllUser(@NonNull Context context){
         return new ClearAllUser(Injection.provideAccountRepository(context));
     }
+
+    //About Tasks Usecase
+    public static GetTask provideGetTask(@NonNull Context context){
+        return  new GetTask(Injection.provideTasksRepository(context));
+    }
+    public static GetTasks provideGetTasks(@NonNull Context context){
+        return  new GetTasks(Injection.provideTasksRepository(context), new FilterFactory());
+    }
+
 }
