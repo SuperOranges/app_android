@@ -30,7 +30,7 @@ ext {
 
     // App dependencies
 
-    supportLibraryVersion = '25.3.1'
+    supportLibraryVersion = '26.+'
     guavaVersion = '18.0'
     junitVersion = '4.12'
     mockitoVersion = '1.10.19'
@@ -39,4 +39,5 @@ ext {
     runnerVersion = '0.5'
     rulesVersion = '0.5'
     espressoVersion = '2.2.2'
+    circleimageviewVersion = '2.1.0'
 }

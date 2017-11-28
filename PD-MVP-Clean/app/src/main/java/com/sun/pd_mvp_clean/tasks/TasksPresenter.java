@@ -6,4 +6,8 @@ package com.sun.pd_mvp_clean.tasks;
 
 public class TasksPresenter implements TasksContract.Presenter {
 
+    @Override
+    public void start() {
+
+    }
 }
