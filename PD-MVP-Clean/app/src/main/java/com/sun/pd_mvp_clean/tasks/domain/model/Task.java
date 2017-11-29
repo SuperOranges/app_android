@@ -350,4 +350,24 @@ public final class Task {
         }
     }
 
+    public String taskStatus(){
+        if(!isBegin()){
+            return "待开工";
+        }else if(!isReport()){
+            return "待报检";
+        }else if(!isChecked()){
+            return "待检查";
+        }else if(!isAssign()){
+            return "待配单";
+        }else if(!isSend()){
+            return "待派单";
+        }else if(!isCompleted()){
+            return "待收料";
+        }else if(!isCompleted()){
+            return  "待入库";
+        }else{
+            return "已完工";
+        }
+
+    }
 }

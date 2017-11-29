@@ -7,4 +7,6 @@
     <string name="history_plan">历史计划</string>
     <string name="user_profile">个人中心</string>
     <string name="greeting">欢迎您！</string>
+    <string name="notasks">没有更多的日计划啦！</string>
+    <string name="reflash">刷新试试？</string>
 </resources>
