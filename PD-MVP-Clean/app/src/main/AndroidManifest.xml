@@ -11,21 +11,21 @@
         android:theme="@style/AppTheme">
         <activity android:name=".tasks.TasksActivity" android:theme="@style/DrawerLayoutTheme"
             android:label="今日计划">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
-
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
-        </activity>
-        <activity android:name=".login.LoginActivity">
-
-        </activity>
-        <activity android:name=".welcome.WelcomeActivity" android:theme="@style/NotitleTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".login.LoginActivity">
+
+        </activity>
+        <activity android:name=".welcome.WelcomeActivity" android:theme="@style/NotitleTheme">
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
         </activity>
     </application>
 

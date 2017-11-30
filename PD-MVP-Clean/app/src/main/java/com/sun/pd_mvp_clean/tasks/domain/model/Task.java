@@ -326,7 +326,7 @@ public final class Task {
             return false;
         }
     }
-
+    //是否正常完成
     public boolean isNormalCompleted(){
         if(mBeginTime!= null && mCompleteTime!=null && DateUtils.isDateSame(mCompleteTime,mBeginTime)){
             return true;
@@ -334,7 +334,16 @@ public final class Task {
             return false;
         }
     }
+    //是否超时
+    public boolean isOverTime(){
+        if(mBeginTime!=null && DateUtils.isDateOneBigger(DateUtils.getSystemDatetime(),mBeginTime)){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
+    //是否超时完成
     public boolean isOvertimeCompleted(){
         if(mBeginTime!= null && mCompleteTime!=null && DateUtils.isDateOneBigger(mCompleteTime,mBeginTime)){
             return true;
@@ -342,8 +351,9 @@ public final class Task {
             return false;
         }
     }
-    public  boolean isOvertimeThreeDaysCompleted(){
-        if(mBeginTime!= null && mCompleteTime!=null && DateUtils.isDateOverThreeDays(mCompleteTime,mBeginTime)){
+    //是否超过开工时间三天
+    public  boolean isOvertimeThreeDaysUnComplete(){
+        if(mBeginTime!= null && DateUtils.isDateOverThreeDays(DateUtils.getSystemDatetime(),mBeginTime)){
             return true;
         }else{
             return false;

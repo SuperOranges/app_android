@@ -9,4 +9,10 @@
     <string name="greeting">欢迎您！</string>
     <string name="notasks">没有更多的日计划啦！</string>
     <string name="reflash">刷新试试？</string>
+    <string name="menuFilter">过滤器</string>
+    <string name="menuAll">全部</string>
+    <string name="menuNotBegin">未开工</string>
+    <string name="menuInProcess">处理中</string>
+    <string name="menuCompleted">已完成</string>
+    <string name="taskreflashtitle">刷新</string>
 </resources>

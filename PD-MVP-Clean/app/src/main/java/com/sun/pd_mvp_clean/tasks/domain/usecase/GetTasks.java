@@ -35,7 +35,10 @@ public class GetTasks extends UseCase<GetTasks.RequestValues,GetTasks.ResponseVa
     }
     @Override
     protected void executeUseCase(final RequestValues requestValues) {
+        Log.e("GetTasks","executeUseCase!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         if(requestValues.isForceUpdate()){
+
+            Log.e("GetTasks","refresh!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             mTasksRepository.refreshTasks(requestValues.getFlag());
         }
         switch (requestValues.getFlag()){
@@ -59,8 +62,10 @@ public class GetTasks extends UseCase<GetTasks.RequestValues,GetTasks.ResponseVa
                 break;
             case 2:
                 mTasksRepository.getUncompletedTasks(2, requestValues.getToday(), new TasksDataSource.LoadTasksCallback() {
+
                     @Override
                     public void onTasksLoaded(List<Task> tasks) {
+                        Log.e("GetTasks","onTasksLoaded!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
                         TaskFilterType currentFiltering = requestValues.getCurrentFiltering();
                         TaskFilter taskFilter = mFilterFactory.create(currentFiltering);
 
@@ -197,6 +202,7 @@ public class GetTasks extends UseCase<GetTasks.RequestValues,GetTasks.ResponseVa
             mToday = today;
             mStartDay = startDay;
             mEndDay = endDay;
+            Log.e("GetTasks","requestValues!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         }
 
     }

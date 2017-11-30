@@ -96,6 +96,14 @@ public class DateUtils {
         }
         return null;
     }
+    public static Date getSystemDatetime(){
 
+        long time=System.currentTimeMillis();//long now = android.os.SystemClock.uptimeMillis();
+
+        Date d1 =new Date(time);
+        return date2date(d1);
+
+
+    }
 
 }

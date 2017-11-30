@@ -34,7 +34,7 @@ public interface TasksContract {
 
     interface  Presenter extends BasePresenter {
         void result(int requestCode ,int resultCode);
-        void loadTasks(boolean forceUpdate);
+        void loadTasks(int flag,boolean forceUpdate);
         void setFiltering(TaskFilterType requestType);
         TaskFilterType getFiltering();
         void openTaskDetails(@NonNull Task requestedTask);

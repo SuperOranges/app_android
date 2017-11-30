@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/all2"
+        android:title="@string/menuAll" />
+    <item
+        android:id="@+id/notBegin2"
+        android:title="@string/menuNotBegin" />
+    <item
+        android:id="@+id/inProcess2"
+        android:title="@string/menuInProcess" />
+    <item
+        android:id="@+id/completed2"
+        android:title="@string/menuCompleted" />
+
+</menu>

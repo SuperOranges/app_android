@@ -27,19 +27,20 @@ public class TasksPresenter implements TasksContract.Presenter {
     private boolean mFirstLoad = true;
 
     private final UseCaseHandler mUseCaseHandler;
+    private final int mFlag;
 
     public TasksPresenter(@NonNull UseCaseHandler useCaseHandler,
-                          @NonNull TasksContract.View tasksView, @NonNull GetTasks getTasks
-                         ) {
+                          @NonNull TasksContract.View tasksView, @NonNull GetTasks getTasks,
+                        @NonNull int flag) {
         mUseCaseHandler = checkNotNull(useCaseHandler, "usecaseHandler cannot be null");
         mTasksView = checkNotNull(tasksView, "tasksView cannot be null!");
         mGetTasks = checkNotNull(getTasks, "getTask cannot be null!");
-
+        mFlag = checkNotNull(flag, "flag cannot be null!");
         mTasksView.setPresenter(this);
     }
     @Override
     public void start() {
-        loadTasks(false);
+        loadTasks(mFlag,false);
     }
 
     @Override
@@ -48,30 +49,29 @@ public class TasksPresenter implements TasksContract.Presenter {
     }
 
     @Override
-    public void loadTasks(boolean forceUpdate) {
-        loadTasks(forceUpdate || mFirstLoad, true);
+    public void loadTasks(int flag,boolean forceUpdate) {
+        loadTasks(flag,forceUpdate || mFirstLoad, true);
         mFirstLoad = false;
     }
 
     /**
      *
+     * @param flag  此参数是模式参数
      * @param forceUpdate 此参数为true是刷新数据源中的数据
      * @param showLoadingUI 此参数为true是刷新载入UI
      */
-    private void loadTasks(boolean forceUpdate,final boolean showLoadingUI){
+    private void loadTasks(int flag ,boolean forceUpdate,final boolean showLoadingUI){
         if (showLoadingUI) {
             mTasksView.setLoadingIndicator(true);
         }
-        GetTasks.RequestValues requestValues2 = new GetTasks.RequestValues(mCurrentFiltering,forceUpdate,2,
-                DateUtils.getWebsiteDatetime(),null,null);
+        GetTasks.RequestValues requestValues2 = new GetTasks.RequestValues(mCurrentFiltering,forceUpdate,flag,
+                DateUtils.getSystemDatetime(),null,null);
 
         mUseCaseHandler.execute(mGetTasks, requestValues2, new UseCase.UseCaseCallback<GetTasks.ResponseValue>() {
             @Override
             public void onSuccess(GetTasks.ResponseValue response) {
                 List<Task> tasks = response.getTasks();
-                if (!mTasksView.isActive()) {
-                    return;
-                }
+
                 if (showLoadingUI) {
                     mTasksView.setLoadingIndicator(false);
                 }
@@ -81,9 +81,7 @@ public class TasksPresenter implements TasksContract.Presenter {
 
             @Override
             public void onError() {
-                if (!mTasksView.isActive()) {
-                    return;
-                }
+
                 mTasksView.showLoadingTasksError();
             }
         });

@@ -189,6 +189,7 @@ public class TasksRepository implements TasksDataSource {
      */
     @Override
     public void getUncompletedTasks(@NonNull final int flag, @NonNull Date date, @NonNull final LoadTasksCallback callback) {
+        Log.e("TasksRepository","getUncompletedTasks!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         switch (flag) {
             case 1:
                 if(mUncompletedBeforeCacheTasks != null && !mUncompletedBeforeCacheIsDirty ){
@@ -247,10 +248,12 @@ public class TasksRepository implements TasksDataSource {
         switch (flag){
             case 4:
                 if(mTodayCacheTasks != null && !mTodayCacheIsDirty){
+                    Log.e("TasksRepository","mTodayCacheTasks not null !!!!!!!!!!!");
                     callback.onTasksLoaded(new ArrayList<Task>(mTodayCacheTasks.values()));
                     return;
                 }
                 if(mTodayCacheIsDirty) {
+                    Log.e("TasksRepository","mTodayCacheTasks not null !!!!!!!!!!!");
                     mTasksRemoteDataSource.getFutureTasks(4, date, new LoadTasksCallback() {
                         @Override
                         public void onTasksLoaded(List<Task> tasks) {
