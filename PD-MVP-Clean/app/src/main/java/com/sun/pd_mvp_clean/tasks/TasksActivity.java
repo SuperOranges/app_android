@@ -104,12 +104,6 @@ public class TasksActivity extends AppCompatActivity {
             mTasksPresenter2.setFiltering(currentFiltering1);
         }
 
-
-
-
-
-
-
     }
     @Override
     public void onSaveInstanceState(Bundle outState) {

@@ -25,10 +25,14 @@ public interface TasksContract {
         void showNoTasks();
         void showNoInProcessTasks();
         void showNoNotBeginTasks();
+        void showNoCompletedTasks();
 
+
+        //不小心把Label打成了Lable了
         void showAllTasksLable();
         void showNotBeginLable();
         void showInProcessLable();
+        void showCompletedLable();
         void showFilteringPopUpMenu();
     }
 

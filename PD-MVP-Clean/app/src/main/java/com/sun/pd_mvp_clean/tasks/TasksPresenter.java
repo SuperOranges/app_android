@@ -107,6 +107,8 @@ public class TasksPresenter implements TasksContract.Presenter {
             case IN_PROCESS:
                 mTasksView.showNoInProcessTasks();
                 break;
+            case COMPLETED:
+                mTasksView.showNoCompletedTasks();
             default:
                 mTasksView.showNoTasks();
                 break;
@@ -121,6 +123,8 @@ public class TasksPresenter implements TasksContract.Presenter {
             case IN_PROCESS:
                 mTasksView.showInProcessLable();
                 break;
+            case COMPLETED:
+                mTasksView.showCompletedLable();
             default:
                 mTasksView.showAllTasksLable();
                 break;

@@ -142,32 +142,64 @@ public class TasksFragment extends Fragment implements TasksContract.View {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.tasks_fragment_menu1, menu);
+        if(mFlag <= 4){
+            inflater.inflate(R.menu.tasks_fragment_menu1, menu);
+        }else{
+            inflater.inflate(R.menu.tasks_fragment_menu2, menu);
+        }
+
     }
     @Override
     public void showFilteringPopUpMenu() {
-        PopupMenu popup = new PopupMenu(getContext(), getActivity().findViewById(R.id.menu_filter));
-        popup.getMenuInflater().inflate(R.menu.filter_tasks1, popup.getMenu());
+        if(mFlag <= 2) {
+            PopupMenu popup = new PopupMenu(getContext(), getActivity().findViewById(R.id.menu_filter));
+            popup.getMenuInflater().inflate(R.menu.filter_tasks1, popup.getMenu());
 
-        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.notBegin1:
-                        mPresenter.setFiltering(TaskFilterType.NOT_BEGIN);
-                        break;
-                    case R.id.inProcess1:
-                        mPresenter.setFiltering(TaskFilterType.IN_PROCESS);
-                        break;
-                    default:
-                        mPresenter.setFiltering(TaskFilterType.ALL_TASKS);
-                        break;
+            popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                public boolean onMenuItemClick(MenuItem item) {
+                    switch (item.getItemId()) {
+                        case R.id.notBegin1:
+                            mPresenter.setFiltering(TaskFilterType.NOT_BEGIN);
+                            break;
+                        case R.id.inProcess1:
+                            mPresenter.setFiltering(TaskFilterType.IN_PROCESS);
+                            break;
+                        default:
+                            mPresenter.setFiltering(TaskFilterType.ALL_TASKS);
+                            break;
+                    }
+                    mPresenter.loadTasks(mFlag, false);
+                    return true;
                 }
-                mPresenter.loadTasks(mFlag,false);
-                return true;
-            }
-        });
+            });
+            popup.show();
+        }
+        if(mFlag==4){
+            PopupMenu popup = new PopupMenu(getContext(), getActivity().findViewById(R.id.menu_filter));
+            popup.getMenuInflater().inflate(R.menu.filter_tasks2, popup.getMenu());
 
-        popup.show();
+            popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                public boolean onMenuItemClick(MenuItem item) {
+                    switch (item.getItemId()) {
+                        case R.id.notBegin2:
+                            mPresenter.setFiltering(TaskFilterType.NOT_BEGIN);
+                            break;
+                        case R.id.inProcess2:
+                            mPresenter.setFiltering(TaskFilterType.IN_PROCESS);
+                            break;
+                        case R.id.completed2:
+                            mPresenter.setFiltering(TaskFilterType.COMPLETED);
+                            break;
+                        default:
+                            mPresenter.setFiltering(TaskFilterType.ALL_TASKS);
+                            break;
+                    }
+                    mPresenter.loadTasks(mFlag, false);
+                    return true;
+                }
+            });
+            popup.show();
+        }
     }
 
     @Override
@@ -226,6 +258,10 @@ public class TasksFragment extends Fragment implements TasksContract.View {
     public void showNoNotBeginTasks() {
         showNoTasksViews("没有未开工的日计划");
     }
+    @Override
+    public void showNoCompletedTasks() {
+        showNoTasksViews("没有已完成的日计划");
+    }
 
     private void showNoTasksViews(String mainText) {
         mTasksView.setVisibility(View.GONE);
@@ -247,7 +283,10 @@ public class TasksFragment extends Fragment implements TasksContract.View {
         mFilteringLabelView.setText(tipsText()+"处理中计划");
     }
 
-
+    @Override
+    public void showCompletedLable() {
+            mFilteringLabelView.setText(tipsText()+"已完成计划");
+    }
 
     private static class TasksAdapter extends BaseAdapter{
         private List<Task> mTasks;
@@ -328,11 +367,11 @@ public class TasksFragment extends Fragment implements TasksContract.View {
             case 2:
                 return "今日";
             case 4:
-                return "今日全部";
+                return "今日";
             case 5:
-                return "明日全部未完成";
+                return "明日";
             case 6:
-                return "后日全部未完成";
+                return "后日";
             default:
                 return "";
         }
