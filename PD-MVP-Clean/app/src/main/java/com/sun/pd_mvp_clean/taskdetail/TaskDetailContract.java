@@ -12,6 +12,8 @@ import com.sun.pd_mvp_clean.tasks.domain.model.Task;
 public interface TaskDetailContract {
     interface view extends BaseView<Presenter>{
         void showTaskDetailInfo(Task task);
+        void showErrorInfo();
+
     }
     interface  Presenter extends BasePresenter {
         void getTaskDetail(int flag);
