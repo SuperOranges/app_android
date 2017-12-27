@@ -20,6 +20,9 @@
         <activity android:name=".login.LoginActivity">
 
         </activity>
+        <activity android:name=".taskdetail.TaskDetailActivity">
+
+        </activity>
         <activity android:name=".welcome.WelcomeActivity" android:theme="@style/NotitleTheme">
             <!--<intent-filter>-->
                 <!--<action android:name="android.intent.action.MAIN" />-->
